@@ -1,0 +1,20 @@
+Plan for settings:
+- buttons for:
+  - clear screen
+  - update settings
+  - play/pause/step
+  - reset
+- data editor for sticks
+- color editor
+- trace mode selector
+- sliders/number inputs for:
+  - framerate
+  - draw()'s per frame
+  - lineWidth
+  - stick speed
+  - stick scale
+  - random stick count
+- button to generate random sticks
+- checkboxes for:
+  - wether or not to clear the screen after a settings change
+  - wether or not to automatically update settings
