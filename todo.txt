@@ -1,0 +1,7 @@
+- code comments
+- cool colors
+  - gradient across sticks
+  - color palette
+- a readme
+- a settings menu
+  - stick config saving and loading
