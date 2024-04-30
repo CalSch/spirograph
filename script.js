@@ -21,7 +21,7 @@ let sticksLengthRatio = [];
 for (let i=0;i<5;i++) {
     sticks.push(0);
     sticksSpeedRatio.push( 2*(Math.random()-0.5));
-    sticksLengthRatio.push(2*(Math.random()-0.5));
+    sticksLengthRatio.push(Math.random()*1.5);
 }
 
 // Add 0.001 to prevent a moire pattern and to make things smooth
