@@ -1,4 +1,4 @@
-- code comments
+X code comments
 - cool colors
   - gradient across sticks
   - color palette
