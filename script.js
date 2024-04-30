@@ -10,16 +10,21 @@ let ctx = canvasEl.getContext('2d');
 
 ctx.lineCap = "round";
 
+/** Position of the sticks @type {number[]} */
 let sticks            = [];
+/** Speeds of the sticks @type {number[]} */
 let sticksSpeedRatio  = [];
+/** Lengths of the sticks @type {number[]} */
 let sticksLengthRatio = [];
 
+// Add 5 random sticks
 for (let i=0;i<5;i++) {
     sticks.push(0);
     sticksSpeedRatio.push( 2*(Math.random()-0.5));
     sticksLengthRatio.push(2*(Math.random()-0.5));
 }
 
+// Add 0.001 to prevent a moire pattern and to make things smooth
 let sticksSpeed = 0.75 + 0.001;
 let sticksScale = 180;
 
@@ -31,37 +36,46 @@ function draw() {
     // ctx.fillRect(0,0,screenWidth,screenHeight);
     
     ctx.save();
+    // Make (0,0) the center
     ctx.translate(screenWidth/2,screenHeight/2);
 
     let x = 0;
     let y = 0;
     let angle = 0;
 
+    // Color options
     // ctx.strokeStyle = `hsl(${Math.random()*360}deg,100%,50%)`;
     // ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed/2}deg,70%,55%)`;
     ctx.strokeStyle = `white`;
+
     ctx.lineWidth = 0.02;
     ctx.beginPath();
     ctx.moveTo(x,y);
 
+    // Draw each stick and move them
     for (let i=0;i<sticks.length;i++) {
         let pos = sticks[i];
         let length = sticksLengthRatio[i] * sticksScale;
         let speed = sticksSpeedRatio[i] * sticksSpeed;
+
         angle += pos;
         x += Math.cos(angle*Math.PI/180)*length;
         y += Math.sin(angle*Math.PI/180)*length;
+
         ctx.lineTo(x,y);
 
-        sticks[i] += speed + (Math.random()-0.5)*0;
+        // Move the stick
+        sticks[i] += speed;
     }
 
     ctx.stroke();
 
+    // Un-transform
     ctx.restore();
 }
 
 setInterval(()=>{
+    // Draw 20 times per frame
     for (let i=20;i--;)
         draw();
 },1000/60);
