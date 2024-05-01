@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spirograph</title>
 
-    <style>
-        canvas {
-            border: 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Spirograph</h1>
     <canvas id="screen"></canvas>
-
+    <br>
+    <input type="text" id="colorInput" placeholder="Enter stick color" value="white">
+    <br>
+    <input type="text" id="bgInput" placeholder="Enter background color" value="black">
+    <br>
+    <input type="number" step="0.01" min="0" max="10" id="lineWidthInput" value="0.02">
+    <br>
+    gradient toggle:
+    <label class="switch">
+        <input type="checkbox" id="gradInput">
+        <span class="slider round"></span>
+    </label>
     <script src="script.js"></script>
+    <button onclick="clearScreen()">Clear</button>
 </body>
+
 </html>
