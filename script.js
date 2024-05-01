@@ -38,7 +38,7 @@ const TraceType = {
 let traceMode = TraceType.Line;
 let jointSize = 2;
 
-ctx.fillStyle = "black";
+ctx.fillStyle = document.getElementById('bgInput').value;
 ctx.fillRect(0,0,screenWidth,screenHeight);
 
 function draw() {
@@ -55,10 +55,14 @@ function draw() {
 
     // Color options
     // ctx.strokeStyle = `hsl(${Math.random()*360}deg,100%,50%)`;
-    // ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed/2}deg,70%,55%)`;
-    ctx.strokeStyle = `white`;
+    if (document.getElementById("gradInput").checked){
+        ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed/8}deg,70%,55%)`;
+    }
+    else {
+    ctx.strokeStyle = document.getElementById('colorInput').value;
+    }
 
-    ctx.lineWidth = 0.02;
+    ctx.lineWidth = document.getElementById('lineWidthInput').value;
     ctx.beginPath();
     ctx.moveTo(x,y);
 
@@ -105,3 +109,8 @@ setInterval(()=>{
     for (let i=20;i--;)
         draw();
 },1000/60);
+
+function clearScreen() {
+    ctx.fillStyle = document.getElementById('bgInput').value;
+    ctx.fillRect(0,0,screenWidth,screenHeight);
+}
