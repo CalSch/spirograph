@@ -1,5 +1,5 @@
-let screenWidth = 640;
-let screenHeight = 640;
+let screenWidth = 800;
+let screenHeight = 800;
 
 /** @type {HTMLCanvasElement} */
 let canvasEl = document.getElementById('screen');
@@ -55,10 +55,10 @@ function draw() {
 
     // Color options
     // ctx.strokeStyle = `hsl(${Math.random()*360}deg,100%,50%)`;
-    // ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed/2}deg,70%,55%)`;
-    ctx.strokeStyle = `white`;
+    ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed*2}deg,70%,55%)`;
+    // ctx.strokeStyle = `rgba(210,210,255,1)`;
 
-    ctx.lineWidth = 0.02;
+    ctx.lineWidth = 0.01;
     ctx.beginPath();
     ctx.moveTo(x,y);
 
@@ -102,7 +102,7 @@ function draw() {
 
 setInterval(()=>{
     // Draw 20 times per frame
-    for (let i=60;i--;)
+    for (let i=20;i--;)
         draw();
 },1000/60);
 
