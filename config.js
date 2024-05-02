@@ -13,6 +13,16 @@ let configContainer = document.getElementById("config");
  */
 let configProperties = {};
 
+/**
+ * Round a number to the given decimal place
+ * @param {number} number 
+ * @param {number} place 
+ * @returns {number}
+ */
+function roundToPlace(number,place) {
+	let scalar = 10**place;
+	return Math.round(number*scalar)/scalar;
+}
 
 /**
  * Add an <hr> element to the config area
@@ -119,7 +129,7 @@ function addButton(name,onclick) {
  */
 function updateNumber(name) {
 	let prop = configProperties[name];
-	prop.element.value = prop.value;
+	prop.element.value = roundToPlace(prop.value,5);
 }
 
 /**

@@ -9,6 +9,7 @@ canvasEl.height = screenHeight;
 let ctx = canvasEl.getContext('2d');
 
 ctx.lineCap = "round";
+ctx.lineWidth = 0.03
 
 /** Position of the sticks @type {number[]} */
 let sticks            = [];
@@ -64,7 +65,6 @@ function draw() {
     ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed*2}deg,70%,55%)`;
     // ctx.strokeStyle = `rgba(210,210,255,1)`;
 
-    ctx.lineWidth = 0.03
     ctx.beginPath();
     ctx.moveTo(x,y);
 
@@ -170,6 +170,12 @@ addNumber("Stick scale", (ev)=>{
     if (value != NaN)
         sticksScale = value;
 },sticksScale,10);
+
+addNumber("Line width", (ev)=>{
+    let value = parseFloat(ev.target.value);
+    if (value != NaN)
+        ctx.lineWidth = value;
+},ctx.lineWidth,0.01);
 
 addSeparator();
 
