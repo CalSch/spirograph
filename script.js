@@ -26,7 +26,7 @@ for (let i=0;i<5;i++) {
 
 // Add 0.001 to prevent a moire pattern and to make things smooth
 let sticksSpeed = 0.25 + 0.0001;
-let sticksScale = 180;
+let sticksScale = 140;
 
 const TraceType = {
     None: 0,
@@ -58,7 +58,7 @@ function draw() {
     ctx.strokeStyle = `hsl(${sticks[2]*sticksSpeed*2}deg,70%,55%)`;
     // ctx.strokeStyle = `rgba(210,210,255,1)`;
 
-    ctx.lineWidth = 0.01;
+    ctx.lineWidth = 0.03
     ctx.beginPath();
     ctx.moveTo(x,y);
 
@@ -94,6 +94,8 @@ function draw() {
         sticks[i] += speed;
     }
 
+    ctx.strokeStyle = `rgb(${((x/screenWidth)+0.5)*255},${((y/screenHeight)+0.5)*255},150)`;
+
     ctx.stroke();
 
     // Un-transform
@@ -102,7 +104,7 @@ function draw() {
 
 setInterval(()=>{
     // Draw 20 times per frame
-    for (let i=20;i--;)
+    for (let i=100;i--;)
         draw();
 },1000/60);
 
