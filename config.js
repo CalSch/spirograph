@@ -13,6 +13,23 @@ let configContainer = document.getElementById("config");
  */
 let configProperties = {};
 
+
+/**
+ * Add an <hr> element to the config area
+ */
+function addSeparator() {
+	let el = document.createElement("hr");
+	configContainer.appendChild(el);
+}
+
+/**
+ * Add an <br> element to the config area
+ */
+function addLineBreak() {
+	let el = document.createElement("br");
+	configContainer.appendChild(el);
+}
+
 /**
  * Add a number config element
  * @param {string} name property name
@@ -33,11 +50,9 @@ function addNumber(name,onchange,value,step) {
 	label.setAttribute("for",name);
 	label.innerText=`${name}: `;
 
-	let separator = document.createElement("br");
-
 	configContainer.appendChild(label);
 	configContainer.appendChild(el);
-	configContainer.appendChild(separator);
+	addLineBreak();
 
 	let prop = {
 		name,
@@ -68,12 +83,9 @@ function addList(name,onchange,value) {
 	label.setAttribute("for",name);
 	label.innerText=`${name}: `;
 
-	let separator = document.createElement("br");
-	let separator2 = document.createElement("br");
-
-	configContainer.append(separator);
+	addLineBreak();
 	configContainer.appendChild(label);
-	configContainer.append(separator2);
+	addLineBreak();
 	configContainer.appendChild(el);
 	
 	let prop = {
@@ -98,14 +110,6 @@ function addButton(name,onclick) {
 	el.name = name;
 	el.innerText = name;
 
-	configContainer.appendChild(el);
-}
-
-/**
- * Add an <hr> element to the config
- */
-function addSeparator() {
-	let el = document.createElement("hr");
 	configContainer.appendChild(el);
 }
 
