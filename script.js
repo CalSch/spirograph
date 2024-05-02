@@ -113,3 +113,8 @@ addNumber("speed",(ev)=>{
     if (value != NaN)
         sticksSpeed = value;
 },sticksSpeed);
+addList("stuff",(ev)=>{
+    let value = JSON.parse(ev.target.value);
+    if (value)
+        sticksSpeedRatio = value;
+})

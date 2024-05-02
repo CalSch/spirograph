@@ -32,7 +32,7 @@ function addNumber(name,onchange,value) {
 function addList(name,onchange,value) {
 	let el = document.createElement("input");
 	el.type = "text";
-	el.pattern = "(-?\\d+(\\.\\d*)?,)*(-?\\d+(\\.\\d*)?),?"; // list of numbers regex (no brackets)
+	el.pattern = "\[(-?\\d+(\\.\\d*)?,)*(-?\\d+(\\.\\d*)?),?\]"; // list of numbers regex (no brackets)
 	el.onchange = onchange;
 	configContainer.appendChild(el);
 	let prop = {
@@ -51,5 +51,5 @@ function updateNumber(name) {
 
 function updateList(name) {
 	let prop = configProperties[name];
-	prop.element.value = prop.value.toString();
+	prop.element.value = JSON.stringify(prop.value);
 }
