@@ -42,8 +42,10 @@ let drawsPerFrame = 20;
 
 let running = true;
 
-ctx.fillStyle = "black";
-ctx.fillRect(0,0,screenWidth,screenHeight);
+function clear() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,screenWidth,screenHeight);
+}
 
 function draw() {
     // ctx.fillStyle = "black";
@@ -106,6 +108,8 @@ function draw() {
     ctx.restore();
 }
 
+clear();
+
 setInterval(()=>{
     if (running) {
         // Draw 20 times per frame
@@ -121,6 +125,16 @@ addButton("Start",(ev)=>{
 })
 addButton("Stop",(ev)=>{
     running = false;
+})
+
+addLineBreak();
+
+addButton("Clear",clear);
+addButton("Reset",(ev)=>{
+    clear();
+    for (let i=0;i<sticks.length;i++) {
+        sticks[i] = 0;
+    }
 })
 
 addSeparator();
