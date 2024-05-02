@@ -42,6 +42,7 @@ function addList(name,onchange,value) {
 		element: el
 	}
 	configProperties[name]=prop;
+	updateList(name);
 }
 
 function updateNumber(name) {
