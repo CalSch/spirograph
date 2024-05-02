@@ -69,9 +69,11 @@ function addList(name,onchange,value) {
 	label.innerText=`${name}: `;
 
 	let separator = document.createElement("br");
+	let separator2 = document.createElement("br");
 
 	configContainer.append(separator);
 	configContainer.appendChild(label);
+	configContainer.append(separator2);
 	configContainer.appendChild(el);
 	
 	let prop = {
