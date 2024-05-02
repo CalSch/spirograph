@@ -38,6 +38,8 @@ const TraceType = {
 let traceMode = TraceType.Line;
 let jointSize = 2;
 
+let drawsPerFrame = 20;
+
 ctx.fillStyle = "black";
 ctx.fillRect(0,0,screenWidth,screenHeight);
 
@@ -104,7 +106,7 @@ function draw() {
 
 setInterval(()=>{
     // Draw 20 times per frame
-    for (let i=100;i--;)
+    for (let i=drawsPerFrame;i--;)
         draw();
 },1000/60);
 
@@ -113,6 +115,12 @@ addNumber("Total speed",(ev)=>{
     if (value != NaN)
         sticksSpeed = value;
 },sticksSpeed,0.01);
+
+addNumber("draw()'s per frame",(ev)=>{
+    let value = parseInt(ev.target.value);
+    if (value != NaN)
+        drawsPerFrame = value;
+},drawsPerFrame,1);
 
 addList("Stick speeds",(ev)=>{
     let value = JSON.parse(ev.target.value);
