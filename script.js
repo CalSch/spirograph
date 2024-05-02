@@ -1,5 +1,5 @@
-let screenWidth = 800;
-let screenHeight = 800;
+let screenWidth  = 400;
+let screenHeight = 400;
 
 /** @type {HTMLCanvasElement} */
 let canvasEl = document.getElementById('screen');
@@ -112,7 +112,7 @@ addNumber("speed",(ev)=>{
     let value = parseFloat(ev.target.value);
     if (value != NaN)
         sticksSpeed = value;
-},sticksSpeed);
+},sticksSpeed,0.01);
 addList("stuff",(ev)=>{
     let value = JSON.parse(ev.target.value);
     if (value)

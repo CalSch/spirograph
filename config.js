@@ -13,12 +13,22 @@ let configContainer = document.getElementById("config");
  */
 let configProperties = {};
 
-function addNumber(name,onchange,value) {
+function addNumber(name,onchange,value,step) {
+	step = step || 1;
 	let el = document.createElement("input");
 	el.type = "number";
+	el.name = name;
 	el.onchange = onchange;
 	el.value = value;
+	el.step = step;
+
+	let label = document.createElement("label");
+	label.setAttribute("for",name);
+	label.innerText=`${name}: `;
+
+	configContainer.appendChild(label);
 	configContainer.appendChild(el);
+
 	let prop = {
 		name,
 		onchange,
@@ -30,15 +40,28 @@ function addNumber(name,onchange,value) {
 	updateNumber(name);
 }
 function addList(name,onchange,value) {
-	let el = document.createElement("input");
-	el.type = "text";
-	el.pattern = "\[(-?\\d+(\\.\\d*)?,)*(-?\\d+(\\.\\d*)?),?\]"; // list of numbers regex (no brackets)
+	let el = document.createElement("textarea");
+	el.cols = 40;
+	el.rows = 8;
+	// el.pattern = "\[(-?\\d+(\\.\\d*)?,)*(-?\\d+(\\.\\d*)?),?\]"; // list of numbers regex (no brackets)
 	el.onchange = onchange;
+	el.name = name;
+
+	let label = document.createElement("label");
+	label.setAttribute("for",name);
+	label.innerText=`${name}: `;
+
+	let separator = document.createElement("br");
+
+	configContainer.append(separator);
+	configContainer.appendChild(label);
 	configContainer.appendChild(el);
+	
 	let prop = {
 		name,
 		onchange,
 		value,
+		type: "list",
 		element: el
 	}
 	configProperties[name]=prop;
@@ -52,5 +75,5 @@ function updateNumber(name) {
 
 function updateList(name) {
 	let prop = configProperties[name];
-	prop.element.value = JSON.stringify(prop.value);
+	prop.element.value = JSON.stringify(prop.value,null,2);
 }
