@@ -122,10 +122,10 @@ setInterval(()=>{
 
 addButton("Start",(ev)=>{
     running = true;
-})
+});
 addButton("Stop",(ev)=>{
     running = false;
-})
+});
 
 addLineBreak();
 
@@ -135,7 +135,7 @@ addButton("Reset",(ev)=>{
     for (let i=0;i<sticks.length;i++) {
         sticks[i] = 0;
     }
-})
+});
 
 addSeparator();
 
@@ -150,6 +150,12 @@ addNumber("draw()'s per frame",(ev)=>{
     if (value != NaN)
         drawsPerFrame = value;
 },drawsPerFrame,1);
+
+addNumber("Stick scale", (ev)=>{
+    let value = parseFloat(ev.target.value);
+    if (value != NaN)
+        sticksScale = value;
+},sticksScale,10);
 
 addSeparator();
 
