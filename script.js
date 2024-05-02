@@ -118,5 +118,5 @@ addList("stuff",(ev)=>{
     if (value)
         sticksSpeedRatio = value;
     // else
-        alert(`oh no '${ev.target.value}' -> ${value}`)
+        // alert(`oh no '${ev.target.value}' -> ${value}`)
 },sticksSpeedRatio);
