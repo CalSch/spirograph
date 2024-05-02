@@ -120,14 +120,27 @@ setInterval(()=>{
 
 //#region config
 
+let stepAmount = 1;
+
 addButton("Start",(ev)=>{
     running = true;
 });
 addButton("Stop",(ev)=>{
     running = false;
 });
+addButton("Step",(ev)=>{
+    for (let i=stepAmount;i--;)
+    draw();
+});
 
 addLineBreak();
+
+addNumber("Steps",(ev)=>{
+    let value = parseInt(ev.target.value);
+    if (value != NaN)
+        stepAmount = value;
+},stepAmount,1);
+
 
 addButton("Clear",clear);
 addButton("Reset",(ev)=>{
