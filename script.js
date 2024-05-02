@@ -108,15 +108,19 @@ setInterval(()=>{
         draw();
 },1000/60);
 
-addNumber("speed",(ev)=>{
+addNumber("Total speed",(ev)=>{
     let value = parseFloat(ev.target.value);
     if (value != NaN)
         sticksSpeed = value;
 },sticksSpeed,0.01);
-addList("stuff",(ev)=>{
+
+addList("Stick speeds",(ev)=>{
     let value = JSON.parse(ev.target.value);
     if (value)
         sticksSpeedRatio = value;
-    // else
-        // alert(`oh no '${ev.target.value}' -> ${value}`)
 },sticksSpeedRatio);
+addList("Stick lengths",(ev)=>{
+    let value = JSON.parse(ev.target.value);
+    if (value)
+        sticksLengthRatio = value;
+},sticksLengthRatio);
