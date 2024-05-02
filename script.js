@@ -117,4 +117,6 @@ addList("stuff",(ev)=>{
     let value = JSON.parse(ev.target.value);
     if (value)
         sticksSpeedRatio = value;
+    else
+        alert(`oh no '${ev.target.value}' -> ${value}`)
 })
