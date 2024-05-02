@@ -135,6 +135,7 @@ addButton("Reset",(ev)=>{
     for (let i=0;i<sticks.length;i++) {
         sticks[i] = 0;
     }
+    draw();
 });
 
 addSeparator();
