@@ -25,7 +25,7 @@ for (let i=0;i<5;i++) {
 }
 
 // Add 0.001 to prevent a moire pattern and to make things smooth
-let sticksSpeed = 0.75 + 0.001;
+let sticksSpeed = 0.25 + 0.0001;
 let sticksScale = 180;
 
 const TraceType = {
@@ -102,6 +102,12 @@ function draw() {
 
 setInterval(()=>{
     // Draw 20 times per frame
-    for (let i=20;i--;)
+    for (let i=60;i--;)
         draw();
 },1000/60);
+
+addNumber("speed",(ev)=>{
+    let value = parseFloat(ev.target.value);
+    if (value != NaN)
+        sticksSpeed = value;
+},sticksSpeed);
