@@ -1,5 +1,5 @@
-let screenWidth  = 400;
-let screenHeight = 400;
+let screenWidth  = 600;
+let screenHeight = 600;
 
 /** @type {HTMLCanvasElement} */
 let canvasEl = document.getElementById('screen');
@@ -26,7 +26,7 @@ for (let i=0;i<5;i++) {
 
 // Add 0.001 to prevent a moire pattern and to make things smooth
 let sticksSpeed = 0.25 + 0.0001;
-let sticksScale = 140;
+let sticksScale = 100;
 
 const TraceType = {
     None: 0,
