@@ -40,6 +40,8 @@ let jointSize = 2;
 
 let drawsPerFrame = 20;
 
+let running = true;
+
 ctx.fillStyle = "black";
 ctx.fillRect(0,0,screenWidth,screenHeight);
 
@@ -105,10 +107,23 @@ function draw() {
 }
 
 setInterval(()=>{
-    // Draw 20 times per frame
-    for (let i=drawsPerFrame;i--;)
-        draw();
+    if (running) {
+        // Draw 20 times per frame
+        for (let i=drawsPerFrame;i--;)
+            draw();
+    }
 },1000/60);
+
+//#region config
+
+addButton("Start",(ev)=>{
+    running = true;
+})
+addButton("Stop",(ev)=>{
+    running = false;
+})
+
+addSeparator();
 
 addNumber("Total speed",(ev)=>{
     let value = parseFloat(ev.target.value);
@@ -122,6 +137,8 @@ addNumber("draw()'s per frame",(ev)=>{
         drawsPerFrame = value;
 },drawsPerFrame,1);
 
+addSeparator();
+
 addList("Stick speeds",(ev)=>{
     let value = JSON.parse(ev.target.value);
     if (value)
@@ -132,3 +149,5 @@ addList("Stick lengths",(ev)=>{
     if (value)
         sticksLengthRatio = value;
 },sticksLengthRatio);
+
+//#endregion
