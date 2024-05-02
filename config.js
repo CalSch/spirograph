@@ -97,6 +97,14 @@ function addButton(name,onclick) {
 }
 
 /**
+ * Add an <hr> element to the config
+ */
+function addSeparator() {
+	let el = document.createElement("hr");
+	configContainer.appendChild(el);
+}
+
+/**
  * Update a number property display
  * @param {string} name property name
  */
