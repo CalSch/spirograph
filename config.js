@@ -83,6 +83,20 @@ function addList(name,onchange,value) {
 }
 
 /**
+ * Add a button config element
+ * @param {string} name property name
+ * @param {(Event)=>void} onclick onClick callback
+ */
+function addButton(name,onclick) {
+	let el = document.createElement("button");
+	el.onclick = onclick;
+	el.name = name;
+	el.innerText = name;
+
+	configContainer.appendChild(el);
+}
+
+/**
  * Update a number property display
  * @param {string} name property name
  */
