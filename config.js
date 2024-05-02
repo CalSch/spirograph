@@ -33,8 +33,11 @@ function addNumber(name,onchange,value,step) {
 	label.setAttribute("for",name);
 	label.innerText=`${name}: `;
 
+	let separator = document.createElement("br");
+
 	configContainer.appendChild(label);
 	configContainer.appendChild(el);
+	configContainer.appendChild(separator);
 
 	let prop = {
 		name,
