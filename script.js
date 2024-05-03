@@ -18,11 +18,16 @@ let sticksSpeedRatio  = [];
 /** Lengths of the sticks @type {number[]} */
 let sticksLengthRatio = [];
 
-// Add 5 random sticks
-for (let i=0;i<5;i++) {
-    sticks.push(0);
-    sticksSpeedRatio.push( 2*(Math.random()-0.5));
-    sticksLengthRatio.push(Math.random()*1.5);
+function randomizeSticks() {
+    sticks = [];
+    sticksSpeedRatio = [];
+    sticksLengthRatio = [];
+    // Add 5 random sticks
+    for (let i=0;i<5;i++) {
+        sticks.push(0);
+        sticksSpeedRatio.push( 2*(Math.random()-0.5));
+        sticksLengthRatio.push(Math.random()*1.5);
+    }
 }
 
 // Add 0.001 to prevent a moire pattern and to make things smooth
@@ -109,6 +114,7 @@ function draw() {
 }
 
 clear();
+randomizeSticks();
 
 setInterval(()=>{
     if (running) {
@@ -191,3 +197,66 @@ addList("Stick lengths",(ev)=>{
 },sticksLengthRatio);
 
 //#endregion
+
+/**
+ * @typedef {{
+ *  screenWidth: number,
+ *  screenHeight: number,
+ *  sticks: number[],
+ *  sticksSpeedRatio: number[],
+ *  sticksLengthRatio: number[],
+ *  sticksScale: number,
+ *  sticksSpeed: number,
+ *  drawsPerFrame: number,
+ *  lineWidth: number,
+ *  traceMode: number,
+ *  jointSize: number,
+ *  }} SettingsObject
+ */
+
+/**
+ * Get all the settings in one object
+ * @returns {SettingsObject}
+ */
+function getSettingsObject() {
+    return {
+        screenWidth,
+        screenHeight,
+        sticks,
+        sticksSpeedRatio,
+        sticksLengthRatio,
+        sticksScale,
+        sticksSpeed,
+        drawsPerFrame,
+        lineWidth:ctx.lineWidth,
+        traceMode,
+        jointSize,
+    };
+}
+
+/**
+ * Set all the settings from one object
+ * @param {SettingsObject} obj 
+ */
+function setSettingsFromObject(obj) {
+    screenWidth = obj.screenWidth;
+    screenHeight = obj.screenHeight;
+    sticks = obj.sticks;
+    sticksSpeedRatio = obj.sticksSpeedRatio;
+    sticksLengthRatio = obj.sticksLengthRatio;
+    sticksSpeed = obj.sticksSpeed;
+    sticksScale = obj.sticksScale;
+    drawsPerFrame = obj.drawsPerFrame;
+    ctx.lineWidth = obj.lineWidth;
+    traceMode = obj.traceMode;
+    jointSize = obj.jointSize;
+}
+
+function save() {
+    alert(JSON.stringify(getSettingsObject()));
+}
+
+function load() {
+    let data = prompt("save data:");
+    setSettingsFromObject(JSON.parse(data));
+}
