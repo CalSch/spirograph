@@ -11,9 +11,9 @@ If you want to help here are some of the things you could do (and what I will be
    [ ] A global stick color
    [ ] A gradient between sticks
    [ ] Random or customizable palettes
-[ ] Add settings
-   [ ] HTML input tags control variables (probably already a library for this, lmk if you find one!)
-   [ ] Add saving and loading for stick data
-   [ ] Control things like line width and framerate
+[x] Add settings
+   [x] HTML input tags control variables (probably already a library for this, lmk if you find one!)
+   [/] Add saving and loading for stick data
+   [x] Control things like line width and framerate
 [ ] Add some cool pictures to the README
 ```
