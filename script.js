@@ -218,6 +218,14 @@ addList("Stick lengths",(ev)=>{
     }
 },sticksLengthRatio);
 
+addButton("Randomize",(ev)=>{
+    randomizeSticks();
+    setPropertyValue("Stick speeds",sticksSpeedRatio);
+    updateList("Stick speeds");
+    setPropertyValue("Stick lengths",sticksLengthRatio);
+    updateList("Stick lengths");
+})
+
 addSeparator();
 
 addBool("Reset on change",(ev)=>{
