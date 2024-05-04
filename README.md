@@ -13,7 +13,8 @@ If you want to help here are some of the things you could do (and what I will be
    [ ] Random or customizable palettes
 [x] Add settings
    [x] HTML input tags control variables (probably already a library for this, lmk if you find one!)
-   [/] Add saving and loading for stick data
+   [x] Add saving and loading for stick data
    [x] Control things like line width and framerate
+   [ ] Set width and height
 [ ] Add some cool pictures to the README
 ```
