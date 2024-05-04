@@ -93,10 +93,10 @@ function addList(name,onchange,value) {
 	label.setAttribute("for",name);
 	label.innerText=`${name}: `;
 
-	addLineBreak();
 	configContainer.appendChild(label);
 	addLineBreak();
 	configContainer.appendChild(el);
+	addLineBreak();
 	
 	let prop = {
 		name,
