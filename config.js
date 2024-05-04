@@ -154,6 +154,15 @@ function addButton(name,onclick) {
 }
 
 /**
+ * Set a config property's value
+ * @param {string} name property name
+ * @param {any} value 
+ */
+function setPropertyValue(name,value) {
+	configProperties[name].value = value;
+}
+
+/**
  * Update a number property display
  * @param {string} name property name
  */
