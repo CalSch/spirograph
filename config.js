@@ -43,7 +43,7 @@ function addLineBreak() {
 /**
  * Add a number config element
  * @param {string} name property name
- * @param {(Event)=>void} onchange onChange callback
+ * @param {(ev:Event)=>void} onchange onChange callback
  * @param {number} value initial value
  * @param {number?} step Input step @default 1
  */
@@ -78,7 +78,7 @@ function addNumber(name,onchange,value,step) {
 /**
  * Add a list config element
  * @param {string} name property name
- * @param {(Event)=>void} onchange onChange callback
+ * @param {(ev:Event)=>void} onchange onChange callback
  * @param {any[]} value initial value
  */
 function addList(name,onchange,value) {
@@ -112,7 +112,7 @@ function addList(name,onchange,value) {
 /**
  * Add a boolean config element
  * @param {string} name property name
- * @param {(Event)=>void} onchange onChange callback
+ * @param {(ev:Event)=>void} onchange onChange callback
  * @param {boolean} value initial value
  */
 function addBool(name,onchange,value) {
@@ -142,7 +142,7 @@ function addBool(name,onchange,value) {
 /**
  * Add a button config element
  * @param {string} name property name
- * @param {(Event)=>void} onclick onClick callback
+ * @param {(ev:Event)=>void} onclick onClick callback
  */
 function addButton(name,onclick) {
 	let el = document.createElement("button");
