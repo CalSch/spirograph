@@ -48,6 +48,14 @@ let drawsPerFrame = 20;
 
 let running = true;
 
+function reset() {
+    clear();
+    for (let i=0;i<sticks.length;i++) {
+        sticks[i] = 0;
+    }
+    draw();
+}
+
 function clear() {
     ctx.fillStyle = "black";
     ctx.fillRect(0,0,screenWidth,screenHeight);
@@ -128,6 +136,12 @@ setInterval(()=>{
 
 let stepAmount = 1;
 
+let resetAfterChange = false;
+
+function tryClear() {
+    if (resetAfterChange) reset();
+}
+
 addButton("Start",(ev)=>{
     running = true;
 });
@@ -150,51 +164,65 @@ addNumber("Steps",(ev)=>{
 
 addButton("Clear",clear);
 addButton("Reset",(ev)=>{
-    clear();
-    for (let i=0;i<sticks.length;i++) {
-        sticks[i] = 0;
-    }
-    draw();
+    reset();
 });
 
 addSeparator();
 
 addNumber("Total speed",(ev)=>{
     let value = parseFloat(ev.target.value);
-    if (value != NaN)
+    if (value != NaN) {
         sticksSpeed = value;
+        tryClear();
+    }
 },sticksSpeed,0.01);
 
 addNumber("draw()'s per frame",(ev)=>{
     let value = parseInt(ev.target.value);
-    if (value != NaN)
+    if (value != NaN) {
         drawsPerFrame = value;
+        tryClear();
+    }
 },drawsPerFrame,1);
 
 addNumber("Stick scale", (ev)=>{
     let value = parseFloat(ev.target.value);
-    if (value != NaN)
+    if (value != NaN) {
         sticksScale = value;
+        tryClear();
+    }
 },sticksScale,10);
 
 addNumber("Line width", (ev)=>{
     let value = parseFloat(ev.target.value);
-    if (value != NaN)
+    if (value != NaN) {
         ctx.lineWidth = value;
+        tryClear();
+    }
 },ctx.lineWidth,0.01);
 
 addSeparator();
 
 addList("Stick speeds",(ev)=>{
     let value = JSON.parse(ev.target.value);
-    if (value)
+    if (value) {
         sticksSpeedRatio = value;
+        tryClear();
+    }
 },sticksSpeedRatio);
 addList("Stick lengths",(ev)=>{
     let value = JSON.parse(ev.target.value);
-    if (value)
+    if (value) {
         sticksLengthRatio = value;
+        tryClear();
+    }
 },sticksLengthRatio);
+
+addSeparator();
+
+addBool("Reset on change",(ev)=>{
+    resetAfterChange = ev.target.value;
+},resetAfterChange);
 
 //#endregion
 
