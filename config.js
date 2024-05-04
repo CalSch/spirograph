@@ -110,6 +110,36 @@ function addList(name,onchange,value) {
 }
 
 /**
+ * Add a boolean config element
+ * @param {string} name property name
+ * @param {(Event)=>void} onchange onChange callback
+ * @param {boolean} value initial value
+ */
+function addBool(name,onchange,value) {
+	let el = document.createElement("input");
+	el.type = "checkbox"
+	el.onchange = onchange;
+	el.name = name;
+
+	let label = document.createElement("label");
+	label.setAttribute("for",name);
+	label.innerText=`${name}: `;
+
+	configContainer.appendChild(label);
+	configContainer.appendChild(el);
+	
+	let prop = {
+		name,
+		onchange,
+		value,
+		type: "boolean",
+		element: el
+	}
+	configProperties[name]=prop;
+	updateBool(name);
+}
+
+/**
  * Add a button config element
  * @param {string} name property name
  * @param {(Event)=>void} onclick onClick callback
@@ -139,4 +169,13 @@ function updateNumber(name) {
 function updateList(name) {
 	let prop = configProperties[name];
 	prop.element.value = JSON.stringify(prop.value,null,2);
+}
+
+/**
+ * Update a boolean property display
+ * @param {string} name property name
+ */
+function updateBool(name) {
+	let prop = configProperties[name];
+	prop.element.value = prop.value;
 }
